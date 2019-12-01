@@ -12,6 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src=https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js></script>
     <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gupter:700&display=swap" rel="stylesheet">
     
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -31,18 +32,21 @@
 
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form class="form-inline">
+                            <form class="form-inline mb-1">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Enter A City" aria-label="Search">
                                 <button id= "weather-call" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search fa-lg"></i></button>
-                            </form>        
+                            </form> 
+                            <div id= "buttons-view" style= "font-family: 'Calistoga', cursive;" class= "list-group mt-2"></div>       
                         </div>
                     </div>
                 </div>
                 <div class= "col-9">
                         <div class="card">
                                 <div id= "weather" class="card-body">
-                                  This is some text within a card body.
                                 </div>
+                        </div>
+                        <div id= "forecast" class= 'card-deck'>
+
                         </div>
                 </div>
             </div>
