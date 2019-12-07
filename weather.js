@@ -68,7 +68,7 @@ $(document).ready(function(){
                   $('<div>')
                   .attr('id','forecast'+[i])
                   .attr('font-family','Gupter', 'serif')
-                  .addClass("card bg-secondary text-light p-2 mt-2 col-2")
+                  .addClass("card bg-secondary text-light p-2 mt-2 col-sm-2")
                   );
                   var date= JSON.stringify(render_fore[i].dt_txt);
                   var dateF= date.slice(1,11);
@@ -140,7 +140,7 @@ $(document).ready(function(){
                 $('<div>')
                 .attr('id','forecast'+[i])
                 .attr('font-family','Gupter', 'serif')
-                .addClass("card bg-secondary text-light p-2 mt-2 col-2")
+                .addClass("card bg-secondary text-light p-2 mt-2 col-sm-2")
                 );
                 var date= JSON.stringify(forecast5[i].dt_txt);
                 var dateF= date.slice(1,11);
