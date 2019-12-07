@@ -4,7 +4,8 @@ $(document).ready(function(){
 
         e.preventDefault();
         var history = [];
-        var city = $('input').val();
+        var city = $('input').val().toLowerCase();
+        console.log(city);
         history.push(city);
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=214d1666f8c0b350d54cdfa60d57fab6"
         var queryURL5 = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=214d1666f8c0b350d54cdfa60d57fab6"
