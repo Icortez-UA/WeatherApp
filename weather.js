@@ -1,27 +1,27 @@
 $(document).ready(function(){
     $('#weather-call').on('click',function(e){
-        console.log(typeof event);
 
         e.preventDefault();
+        // create array to store each city input
         var history = [];
         var city = $('input').val().toLowerCase();
-        console.log(city);
         history.push(city);
+        // create query url for the weather and 5 day forecast
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=214d1666f8c0b350d54cdfa60d57fab6"
         var queryURL5 = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=214d1666f8c0b350d54cdfa60d57fab6"
+        // grab the date and format it 
         var today = moment().format("YYYY-D-MM");
+        // empty div for purpose of new city update
         $('#weather').empty();
         $('#forecast').empty();
+      //---------------------------------
         if(city==='null'){
           return;
         }
         else{
-          function renderButtons() {
-            //$("#buttons-view").empty();
-    
+          //-------------------------------
+          function renderButtons() {    
             for (var i = 0; i < history.length; i++) {
-    
-
               var a = $("<button>");
               a.addClass("list-group-item list-group-item-action");
               a.attr("data-name", history[i]);
@@ -30,22 +30,25 @@ $(document).ready(function(){
               $("#buttons-view").append(a);
             }
           }
-
           renderButtons();
-          //function to view history of chosen weather cities
+          //-----------------------------------
+          //function to view history of chosen weather cities that is stored in session storage or local storage.
           $('button').click(function(){
+            // var to ignore the submit button
             var ignore= $(this).attr("id");
             if(ignore==="weather-call"){
               return;
             }
             else{
+            // variable to grab session storage 
             var city_store= $(this).attr("data-name");
             var city_main= $(this).text();
-            console.log(city_main);
+            // condition if nothing is stored
             if(city_store===null&& city_main===null&& ignore==="weather-call"){
               return;
             }
             else{
+              //empty div to replace with data from storage.
               $('#forecast').empty();
               $('#weather').empty();
               var render_main= JSON.parse(sessionStorage.getItem(city_main));
