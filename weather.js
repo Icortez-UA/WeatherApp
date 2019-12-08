@@ -51,14 +51,16 @@ $(document).ready(function(){
               //empty div to replace with data from storage.
               $('#forecast').empty();
               $('#weather').empty();
+              // variable for session storage for current weather 
               var render_main= JSON.parse(sessionStorage.getItem(city_main));
               var iconI_main = render_main.weather[0].icon;
+              // capitalize city name to identify which string to grab from storage
               var render_c= city_store.charAt(0).toUpperCase()+ city_store.slice(1);
               var render_fore= JSON.parse(sessionStorage.getItem(city_store));
-
+              //change temp from kelvin to fahrenheit
               var k_main = parseInt(JSON.stringify(render_main.main.temp));
               var t_main = Math.floor((k_main - 273.15) * 1.80 + 32);
-              
+              // code to append content from storage
               $('#weather').append('<h1 id= title>'+city_main+'('+today+')'+'</h1>');
               var img_main = $('<img id="dynamic">'); 
               img_main.attr('src', 'http://openweathermap.org/img/wn/'+iconI_main+'@2x.png');
@@ -66,7 +68,7 @@ $(document).ready(function(){
               $('#weather').append('<p>'+'Temp: '+t_main+String.fromCharCode(176)+'F'+'</p>');
               $('#weather').append('<p>'+'Humidty: '+render_main.main.humidity+String.fromCharCode(37)+'</p>');
               $('#weather').append('<p>'+'Wind Speed: '+render_main.wind.speed+'MPH'+'</p>');
-
+              // code to append content from storage (5day forecast)
               for(i=0; i<render_fore.length; i++){
                 var f_his= $('#forecast').append(
                   $('<div>')
@@ -135,10 +137,12 @@ $(document).ready(function(){
             method: "GET"
           }).then(function(response5) {
             console.log(response5);
-            // 3,11,19,27,35
+            // create array of the 5 day forecast data to display
             var forecast5 = [response5.list[2],response5.list[10],response5.list[18],response5.list[26],response5.list[34]];
+            // set array to session storage
             sessionStorage.setItem(response5.city.name.toLowerCase(),JSON.stringify(forecast5));
             console.log(forecast5);
+            //code to append data to div
             for(i=0; i<forecast5.length; i++){
               var f= $('#forecast').append(
                 $('<div>')
